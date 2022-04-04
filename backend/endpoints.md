@@ -1,0 +1,8 @@
+/user/register (post)  
+/user/login (post)  
+/user/update (put/patch)  
+/user/delete (delete)  
+/user/passwords (get)  
+/user/password/create (post)  
+/user/password/update (put/patch)  
+/user/password/delete (delete)
