@@ -1,6 +1,4 @@
 module.exports = (req, res, fs, keys, data) => {
-  if (!req.decrypted) return res.status(401);
-
   delete keys[req.body.email];
   delete data[req.body.email];
 

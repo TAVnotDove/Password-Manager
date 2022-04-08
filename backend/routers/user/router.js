@@ -19,7 +19,6 @@ router.use((req, res, next) => {
   } else {
     return res.status(401).send('auth: No key provided');
   }
-  // console.log(req.decrypted);
   next();
 });
 
@@ -48,6 +47,11 @@ router.delete('/delete', (req, res) => {
 
 router.get('/passwords', (req, res) => {
   res.send(req.decrypted);
+});
+
+router.get('/password/:id', (req, res) => {
+  if (!req.decrypted[req.params.id]) return res.status(404).send('Password not found');
+  res.send(req.decrypted[req.params.id]);
 });
 
 const create = require('./pass-routes/create.js');

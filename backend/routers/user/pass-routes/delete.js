@@ -1,7 +1,6 @@
 module.exports = (req, res, fs, data, CryptoJS) => {
-  if (!req.decrypted) return res.status(401);
+  if (!req.decrypted[req.body.id]) return res.status(410).send('Password not found');
 
-  console.log(req.decrypted[req.body.id]);
   delete req.decrypted[req.body.id];
 
   req.decrypted = CryptoJS.AES.encrypt(JSON.stringify(req.decrypted), req.headers.key).toString();

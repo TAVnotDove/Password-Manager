@@ -1,7 +1,6 @@
 const { v4: uuidv4 } = require('uuid');
 
 module.exports = (req, res, fs, data, CryptoJS) => {
-  if (!req.decrypted) return res.status(401);
   if (!req.body.name || !req.body.email) return res.status(400).send('No user provided');
   if (!req.body.password) return res.status(400).send('No password provided');
 
@@ -14,7 +13,7 @@ module.exports = (req, res, fs, data, CryptoJS) => {
 
   fs.promises.writeFile('./data/data.json', JSON.stringify(data, null, 2));
 
-  res.send('entry created');
+  res.status(201).send('entry created');
 };
 
 /*
