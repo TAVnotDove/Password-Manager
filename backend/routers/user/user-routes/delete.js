@@ -9,3 +9,7 @@ module.exports = (req, res, fs, keys, data) => {
 
   res.status(418).send('User deleted');
 };
+
+/*
+  just be logged in, include the key and user headers
+*/

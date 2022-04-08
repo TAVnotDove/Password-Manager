@@ -22,3 +22,10 @@ module.exports = (req, res, fs, bcrypt, CryptoJS, keys, data) => {
     res.status(201).json({ key });
   });
 };
+
+/*
+{
+  email: 'stefano',
+  password: '123456789'
+}
+*/
