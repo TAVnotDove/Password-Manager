@@ -8,13 +8,13 @@ const keys = require('../../data/keys.json');
 const data = require('../../data/data.json');
 
 // =========== Auth middleware ===========
-router.use((req, res, next) => {
+router.use(/\/((?!register|login).)*/, (req, res, next) => {
   if (req.headers.key && req.headers.user) {
     try {
       let decrypted = CryptoJS.AES.decrypt(data[req.headers.user], req.headers.key).toString(CryptoJS.enc.Utf8);
       req.decrypted = JSON.parse(decrypted);
     } catch (e) {
-      res.status(401).send('auth: Invalid key');
+      return res.status(401).send('auth: Invalid key');
     }
   } else {
     return res.status(401).send('auth: No key provided');
@@ -33,10 +33,10 @@ router.post('/login', (req, res) => {
   login(req, res, bcrypt, CryptoJS, keys);
 });
 
-// const updateUser = require('./user-routes/update.js');
-// router.patch('/update', (req, res) => {
-//   login(req, res, bcrypt, CryptoJS, keys);
-// });
+const updateUser = require('./user-routes/update.js');
+router.put('/update', (req, res) => {
+  updateUser(req, res, fs, bcrypt, CryptoJS, keys, data);
+});
 
 const deleteUser = require('./user-routes/delete.js');
 router.delete('/delete', (req, res) => {

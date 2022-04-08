@@ -1,11 +1,6 @@
 {
-  "stefano": {
-    "password": "$2b$10$tee2hAS.Hl/ixq1EsEap8O2b.pierJef38kxav2HDCoToBPkEdtR6",
-    "key": "U2FsdGVkX18aSxt+6xVDnssUMIbTD1RNSBk9lLulpJxMeHI+rfXcVl8WZ8x74mAdm4mJUkPIK/vQ65+1GBkYWA==",
-    "original values, its here just for referance": {
-      "email": "stefano",
-      "password": "1234567890",
-      "key": "OR920yN4e5bX5rl5DaZ6f40d0ZmU3mhPvoWuh06Sz4sQNvE"
-    }
+  "gam": {
+    "password": "$2b$10$qenqkAEXR2Mn3CvJmyNBY.rM7H.66FFHwhiCqy10N4EIVzKUsPXjq",
+    "key": "U2FsdGVkX199fiHdfFonB5AOrFEfl/thwd/9oSsGfGJ5SO4mzfEk8Wvel9kBdLYk56DoT3cWZzxarCWTQWXCqA=="
   }
 }

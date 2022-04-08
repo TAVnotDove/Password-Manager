@@ -11,8 +11,7 @@ const userRouter = require('./routers/user/router.js');
 app.use('/user', userRouter);
 
 app.use((req, res, next) => {
-  if (req.accepts('json')) return res.status(404).json({ error: 'Not found' });
-  res.type('txt').status(404).send('Not found');
+  res.status(404).send('Not found');
 });
 
 app.listen(3030, () => {
