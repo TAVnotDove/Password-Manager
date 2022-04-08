@@ -18,10 +18,10 @@ module.exports = (req, res, fs, data, CryptoJS) => {
 
 /*
 {
-    "website" : "google.com",
-    "description" : "my google account yeyaa",
-    "email" : "stefano@gamermail.com",
-    "name" : "stefano",
-    "password" : "123456789"
+  "url" : "google.com",
+  "description" : "my google account yeyaa",
+  "email" : "stefano@gamermail.com",
+  "name" : "stefano",
+  "password" : "123456789"
 }
 */
