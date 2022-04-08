@@ -7,22 +7,23 @@ var fs = require('fs');
 const keys = require('../../data/keys.json');
 const data = require('../../data/data.json');
 
+// =========== Auth middleware ===========
 router.use((req, res, next) => {
-  console.log(req.headers);
-  if (req.headers.key && req.headers.for) {
+  if (req.headers.key && req.headers.user) {
     try {
-      let decrypted = CryptoJS.AES.decrypt(data[req.headers.for], req.headers.key).toString(CryptoJS.enc.Utf8);
+      let decrypted = CryptoJS.AES.decrypt(data[req.headers.user], req.headers.key).toString(CryptoJS.enc.Utf8);
       req.decrypted = JSON.parse(decrypted);
     } catch (e) {
-      res.status(401).send('Invalid key');
+      res.status(401).send('auth: Invalid key');
     }
   } else {
-    return res.status(401).send('No key provided');
+    return res.status(401).send('auth: No key provided');
   }
-  console.log(req.decrypted);
+  // console.log(req.decrypted);
   next();
 });
 
+// ========== User routes ==========
 const register = require('./user-routes/register.js');
 router.post('/register', (req, res) => {
   register(req, res, fs, bcrypt, CryptoJS, keys, data);
@@ -33,8 +34,8 @@ router.post('/login', (req, res) => {
   login(req, res, bcrypt, CryptoJS, keys);
 });
 
-// const login = require('./user-routes/login.js');
-// router.post('/update', (req, res) => {
+// const updateUser = require('./user-routes/update.js');
+// router.patch('/update', (req, res) => {
 //   login(req, res, bcrypt, CryptoJS, keys);
 // });
 
@@ -43,21 +44,25 @@ router.delete('/delete', (req, res) => {
   deleteUser(req, res, fs, keys, data);
 });
 
+// ========== Password routes ==========
+
 router.get('/passwords', (req, res) => {
-  console.log('aaaa');
   res.send(req.decrypted);
 });
 
-router.get('/password/create', (req, res) => {
-  res.send(req.decrypted);
+const create = require('./pass-routes/create.js');
+router.post('/password/create', (req, res) => {
+  create(req, res, fs, data, CryptoJS);
 });
 
-// router.get('/password/update', (req, res) => {
-//   res.send(req.decrypted);
-// });
+const updatePass = require('./pass-routes/update.js');
+router.patch('/password/update', (req, res) => {
+  updatePass(req, res, fs, data, CryptoJS);
+});
 
-// router.get('/password/delete', (req, res) => {
-//   res.send(req.decrypted);
-// });
+const deletePass = require('./pass-routes/delete.js');
+router.delete('/password/delete', (req, res) => {
+  deletePass(req, res, fs, data, CryptoJS);
+});
 
 module.exports = router;
