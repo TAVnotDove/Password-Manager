@@ -22,8 +22,6 @@ module.exports = (req, res, fs, bcrypt, CryptoJS, keys, data) => {
       res.status(201).json({ key });
     });
   } else if (req.body.email) {
-    res.send('trying to update email');
-
     if (Object.keys(keys).includes(req.body.email)) return res.status(403).send('User already in exists');
 
     keys[req.body.email] = keys[req.headers.user];
@@ -34,6 +32,8 @@ module.exports = (req, res, fs, bcrypt, CryptoJS, keys, data) => {
 
     fs.promises.writeFile('./data/keys.json', JSON.stringify(keys, null, 2));
     fs.promises.writeFile('./data/data.json', JSON.stringify(data, null, 2));
+
+    res.status(200).send('Email updated');
   } else {
     res.status(403).send('You cant update like that');
   }

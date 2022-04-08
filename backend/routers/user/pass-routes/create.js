@@ -13,7 +13,7 @@ module.exports = (req, res, fs, data, CryptoJS) => {
 
   fs.promises.writeFile('./data/data.json', JSON.stringify(data, null, 2));
 
-  res.status(201).send('entry created');
+  res.status(201).send('Entry created');
 };
 
 /*

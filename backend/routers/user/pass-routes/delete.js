@@ -8,7 +8,7 @@ module.exports = (req, res, fs, data, CryptoJS) => {
 
   fs.promises.writeFile('./data/data.json', JSON.stringify(data, null, 2));
 
-  res.send('entry deleted');
+  res.send('Entry deleted');
 };
 
 /*

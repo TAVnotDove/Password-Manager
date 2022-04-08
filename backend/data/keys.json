@@ -2,5 +2,9 @@
   "gam": {
     "password": "$2b$10$qenqkAEXR2Mn3CvJmyNBY.rM7H.66FFHwhiCqy10N4EIVzKUsPXjq",
     "key": "U2FsdGVkX199fiHdfFonB5AOrFEfl/thwd/9oSsGfGJ5SO4mzfEk8Wvel9kBdLYk56DoT3cWZzxarCWTQWXCqA=="
+  },
+  "stefano": {
+    "password": "$2b$10$N0L9bTM3ETTHPmHRBqiKQOB0P2L5WceQNx/pnc504.DF10tgGLbmi",
+    "key": "U2FsdGVkX1+RhWE4vLaEvKtRjKOECU9KhJXO1QU7J0Brqn7zZceG4hx7VQyag419zBq5EZu+VYRlKckXMBPaE2vu/BMTCXaqPoq2ZsjMBtI="
   }
 }

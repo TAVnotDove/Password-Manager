@@ -14,10 +14,10 @@ router.use(/\/((?!register|login).)*/, (req, res, next) => {
       let decrypted = CryptoJS.AES.decrypt(data[req.headers.user], req.headers.key).toString(CryptoJS.enc.Utf8);
       req.decrypted = JSON.parse(decrypted);
     } catch (e) {
-      return res.status(401).send('auth: Invalid key');
+      return res.status(401).send('Invalid key');
     }
   } else {
-    return res.status(401).send('auth: No key provided');
+    return res.status(401).send('No key provided');
   }
   next();
 });

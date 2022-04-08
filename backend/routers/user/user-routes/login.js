@@ -1,6 +1,6 @@
 module.exports = (req, res, bcrypt, CryptoJS, keys) => {
   //check if user exists
-  if (!Object.keys(keys).includes(req.body.email)) return res.send('User does not exist');
+  if (!Object.keys(keys).includes(req.body.email)) return res.status(404).send('User does not exist');
 
   //check if password is correct
   bcrypt.compare(req.body.password, keys[req.body.email].password, function (err, result) {
