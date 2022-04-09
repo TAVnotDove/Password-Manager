@@ -12,7 +12,7 @@ This is a manager for your passwords. It requires one master password to view yo
 
 ### Backend:
 
-Documentation can be found [here](backend/docs.md)
+Documentation can be found [here](backend/docs.md)  
 And a short list of the endpoints [here](backend/endpoints.md)
 
 - Add endpoints for communication front to backend ✅
