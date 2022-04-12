@@ -1,0 +1,24 @@
+{
+  "name": "password-manager",
+  "version": "1.0.0",
+  "description": "This is a manager for your passwords. It requires one master password to view your other passwords.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TAVnotDove/Password-Manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TAVnotDove/Password-Manager/issues"
+  },
+  "homepage": "https://github.com/TAVnotDove/Password-Manager#readme",
+  "dependencies": {
+    "lit-html": "^2.2.2",
+    "page": "^1.11.6"
+  }
+}
