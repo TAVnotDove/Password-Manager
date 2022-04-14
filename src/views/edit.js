@@ -1,5 +1,5 @@
 import { html, render } from "../../node_modules/lit-html/lit-html.js"
-import { getPassword } from "../api.js"
+import { editPassword, getPassword } from "../api.js"
 import { getUser } from "../utils/getUser.js"
 
 const mainElement = document.querySelector('#content-main')
@@ -33,6 +33,9 @@ const editTemplate = (submitForm, response) => html`
 
 
 export async function renderEdit(ctx) {
+    let user = JSON.parse(getUser())
+    let response = await getPassword(user.response.key, user.email, ctx.params.id)
+
     async function submitForm(e) {
         e.preventDefault()
 
@@ -44,13 +47,15 @@ export async function renderEdit(ctx) {
         let password = formData.get('password').trim()
 
         if (email.length !== 0 && name.length !== 0 && password.length !== 0) {
-            console.log(email, name, password)
-            e.currentTarget.reset()
+            console.log(email)
+            //let updates = {url, description, email, name, password}
+            let updates = {url, name, password}
+            console.log(updates)
+            console.log(user)
+            console.log(user.response.key, user.email, ctx.params.id, updates)
+            editPassword(user.response.key, user.email, ctx.params.id, updates)
         }
     }
-
-    let user = JSON.parse(getUser())
-    let response = await getPassword(user.response.key, user.email, ctx.params.id)
 
     render(editTemplate(submitForm, response), mainElement)
 }
