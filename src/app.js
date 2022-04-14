@@ -1,4 +1,6 @@
 import page from '../node_modules/page/page.mjs'
+import { renderDelete } from './utils/renderDelete.js'
+import { renderLogout } from './utils/renderLogout.js'
 import { renderCreatePassword } from './views/createPassword.js'
 import { renderEdit } from './views/edit.js'
 import { renderHomepage } from './views/homepage.js'
@@ -12,7 +14,7 @@ page('/create-password', renderCreatePassword)
 page('/register', renderRegister)
 page('/login', renderLogin)
 page('/settings', () => console.log('settings'))
-page('/logout', () => console.log('logout'))
-page('/edit', renderEdit)
-page('/delete', () => console.log('delete'))
+page('/logout', renderLogout)
+page('/edit/:id', renderEdit)
+page('/delete/:id', renderDelete)
 page.start()
