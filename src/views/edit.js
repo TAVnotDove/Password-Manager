@@ -25,12 +25,12 @@ const editTemplate = (submitForm, response) => html`
         </div>
         <div>
             <label>Password</label>
-            <input name="password" type="password" value=${response.password}>
+            <input name="password" id="password" type="password" value=${response.password}>
+            <input type="checkbox" @click=${showPassword}>Show Password
         </div>
         <button>Submit</button>
     </form>
 `
-
 
 export async function renderEdit(ctx) {
     let user = JSON.parse(getUser())
@@ -38,7 +38,6 @@ export async function renderEdit(ctx) {
 
     async function submitForm(e) {
         e.preventDefault()
-        //change
 
         let formData = new FormData(e.currentTarget)
         let url = formData.get('url').trim()
@@ -48,15 +47,20 @@ export async function renderEdit(ctx) {
         let password = formData.get('password').trim()
 
         if (email.length !== 0 && name.length !== 0 && password.length !== 0) {
-            console.log(email)
-            //let updates = {url, description, email, name, password}
-            let updates = {url, name, password}
-            console.log(updates)
-            console.log(user)
-            console.log(user.response.key, user.email, ctx.params.id, updates)
+            let updates = {url, description, email, name, password}
+
             editPassword(user.response.key, user.email, ctx.params.id, updates)
+            ctx.page.redirect('/')
         }
     }
 
     render(editTemplate(submitForm, response), mainElement)
+}
+
+function showPassword(e) {
+    if (e.currentTarget.checked === true) {
+        e.currentTarget.parentElement.querySelector('#password').type = 'text'
+    } else {
+        e.currentTarget.parentElement.querySelector('#password').type = 'password'
+    }
 }
