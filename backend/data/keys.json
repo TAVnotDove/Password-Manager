@@ -1,4 +1,8 @@
 {
+  "123": {
+    "password": "$2b$10$HanULPtO2toXMHrDlU9UsuiM/9TuCfZUEUsL.7qTyfIIKJnTAeAku",
+    "key": "U2FsdGVkX1/V8Sy5ne8PvxbXMRs1uOSNhLDcYlWS9s7inR6flrRiLpesiOjS+BiSTI1Mzrc2W7GCBtM3A4sSdA=="
+  },
   "gam": {
     "password": "$2b$10$qenqkAEXR2Mn3CvJmyNBY.rM7H.66FFHwhiCqy10N4EIVzKUsPXjq",
     "key": "U2FsdGVkX199fiHdfFonB5AOrFEfl/thwd/9oSsGfGJ5SO4mzfEk8Wvel9kBdLYk56DoT3cWZzxarCWTQWXCqA=="
@@ -6,5 +10,9 @@
   "stefano": {
     "password": "$2b$10$N0L9bTM3ETTHPmHRBqiKQOB0P2L5WceQNx/pnc504.DF10tgGLbmi",
     "key": "U2FsdGVkX1+RhWE4vLaEvKtRjKOECU9KhJXO1QU7J0Brqn7zZceG4hx7VQyag419zBq5EZu+VYRlKckXMBPaE2vu/BMTCXaqPoq2ZsjMBtI="
+  },
+  "Pesho": {
+    "password": "$2b$10$7hbk5ndQJgoRtrNoXmcJae5/lBFTpRVeaziwfZtkgDTWcrfm.jAgq",
+    "key": "U2FsdGVkX18Y9MCfDuk8I5aqr6JiRGWufhEMslWh+phfLHlvU+y6BvRkD1FSxa7SU+QM8YskNHtuVg3UteKeqchIf2EaYQBEYdNFQc5gvW8="
   }
 }
