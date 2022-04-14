@@ -15,10 +15,11 @@ const loginTemplate = (submitForm) => html`
             <input name="password" type="password">
         </div>
         <button>Submit</button>
+        <p id="error-message"></p>
     </form>
 `
 
-export function renderLogin() {
+export function renderLogin(ctx) {
     async function submitForm(e) {
         e.preventDefault()
 
@@ -27,8 +28,14 @@ export function renderLogin() {
         let password = formData.get('password').trim()
 
         if (email.length !== 0 && password.length !== 0) {
-            login(email, password)
-            e.currentTarget.reset()
+            let response = await login(email, password)
+
+            if (response) {
+                localStorage.setItem('user', JSON.stringify({email, response}))
+                ctx.page.redirect('/')
+            } else {
+                document.querySelector('#error-message').textContent = "Incorrect email or password."
+            }
         }
     }
 

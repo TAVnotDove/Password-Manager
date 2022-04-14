@@ -1,5 +1,5 @@
 import { html, render } from "../../node_modules/lit-html/lit-html.js"
-import { getUser } from "../utils.js"
+import { getUser } from "../utils/getUser.js"
 
 const headerElement = document.querySelector('#nav-header')
 
