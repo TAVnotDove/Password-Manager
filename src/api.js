@@ -62,6 +62,20 @@ export function createPassword(key, user, url, description, email, name, passwor
     .catch(error => console.log(error))
 }
 
+export function editPassword(key, user, id, updates) {
+    return fetch(`${baseUrl}/password/update`, {
+        method: 'PATCH',
+        headers: {
+            'key': key,
+            'user': user,
+            'content-type': 'application/json' 
+        },
+        body: JSON.stringify({id, updates})
+    })
+    .then(response => response.json())
+    .catch(error => console.log(error))
+}
+
 export function deletePassword(key, user, id) {
     return fetch(`${baseUrl}/password/delete`, {
         method: 'DELETE',
