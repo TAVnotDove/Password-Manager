@@ -7,8 +7,10 @@ This is a manager for your passwords. It requires one master password to view yo
 ## To do:
 
 ### Frontend:
-
-- to be written
+-link files (html, js, css) ✅
+-views (rendering)
+-api (get, post, put and delete requests)
+-css (flexbox and grid)
 
 ### Backend:
 
