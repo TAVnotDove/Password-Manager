@@ -18,11 +18,12 @@ const registerTemplate = (submitForm) => html`
             <label>Repeat Password</label>
             <input name="repeat-password" type="password">
         </div>
-        <button>Submit</button>
+        <button type="submit">Submit</button>
+        <p id="error-message"></p>
     </form>
 `
 
-export function renderRegister() {
+export function renderRegister(ctx) {
     async function submitForm(e) {
         e.preventDefault()
 
@@ -35,8 +36,12 @@ export function renderRegister() {
             if (password === repeatPassword) {
                 let response = await register(email, password)
                 
-                console.log(response)
-                e.currentTarget.reset()
+                if (response) {
+                    localStorage.setItem('user', JSON.stringify({email, response}))
+                    ctx.page.redirect('/')
+                } else {
+                    document.querySelector('#error-message').textContent = "A user with the same email already exists."
+                }
             }
         }
     }

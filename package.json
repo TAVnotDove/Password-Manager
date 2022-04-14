@@ -4,7 +4,8 @@
   "description": "This is a manager for your passwords. It requires one master password to view your other passwords.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/TAVnotDove/Password-Manager#readme",
   "dependencies": {
     "lit-html": "^2.2.2",
+    "lite-server": "^2.6.1",
     "page": "^1.11.6"
   }
 }

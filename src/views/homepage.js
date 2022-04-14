@@ -1,40 +1,43 @@
 import { html, render } from "../../node_modules/lit-html/lit-html.js"
+import { getPasswords } from "../api.js"
+import { getUser } from "../utils/getUser.js"
 
 const mainElement = document.querySelector('#content-main')
 
-const homepageTemplate = () => html`
+const passwordTemplate = (user, passwords) => html`
+    ${passwords.length === 0 ? html`
+        <p>You don't have any passwords.</p>
+    ` : passwords.map(x => html`
+        <div class="password">
+        <h2>${x.name}</h2>
+        <label>password</label>
+        <input type="password" value=${x.password}>
+        <input type="checkbox">Show Password
+        <a href="/edit/${x._id}">Edit</a>
+        <a href=${`/delete/${x._id}`}>Delete</a>
+        </div>
+    `)}
+`
+
+const homepageTemplate = (user, passwords) => html`
     <div class="password">
-        <h1>Welcome</h2>
-        <input placeholder="email">
-        <input type="password" placeholder="password">
+        ${user ? html`
+            <h1>Welcome ${user.email}</h2>
+            ${passwordTemplate(user, passwords)}
+        ` : html`
+            <h1>Welcome to Password Manager!</h2>
+        `}
     </div>
 `
 
-export function renderHomepage() {
-    render(homepageTemplate(), mainElement)
-}
+export async function renderHomepage() {
+    let user = JSON.parse(getUser())
 
-{/* <div class="password">
-    <h2>Website Name</h2>
-    <label>password</label>
-    <input type="password" value="password">
-    <input type="checkbox">Show Password
-    <a href="/edit">Edit</a>
-    <a href="/delete">Delete</a>
-</div>
-<div class="password">
-    <h2>Website Name</h2>
-    <label>password</label>
-    <input type="password" value="password">
-    <input type="checkbox">Show Password
-    <a href="/edit">Edit</a>
-    <a href="/delete">Delete</a>
-</div>
-<div class="password">
-    <h2>Website Name</h2>
-    <label>password</label>
-    <input type="password" value="password">
-    <input type="checkbox">Show Password
-    <a href="/edit">Edit</a>
-    <a href="/delete">Delete</a>
-</div> */}
+    if (user) {
+        let passwords = Object.values(await getPasswords(user.response.key, user.email))
+        
+        render(homepageTemplate(user, passwords), mainElement)
+    } else {
+        render(homepageTemplate(user), mainElement)
+    }
+}
