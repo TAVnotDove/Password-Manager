@@ -1,6 +1,6 @@
 module.exports = (req, res, fs, data, CryptoJS) => {
   if (!req.decrypted[req.body.id]) return res.status(410).send('Password not found');
-  if (!req.decrypted[req.body.updates]) return res.status(400).send('Nothing to update');
+  if (!req.body.updates) return res.status(400).send('Nothing to update');
 
   req.decrypted[req.body.id] = { ...req.decrypted[req.body.id], ...req.body.updates };
 

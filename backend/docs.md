@@ -199,16 +199,16 @@ Returns a list of all passwords for the current user:
 
 <br>
 
-Does not require anything in the body
+Does not require anything in the body  
 The url paramater `id` refers to the ID of a password.
 
 <br>
 
-Returns a list of all passwords for the current user:
+Returns a password specified by the parameter `id`:
 
 ```json
 {
-  "f9b12b91-680d-4857-85a0-48a2ec75248f": {
+  {
     "_id": "f9b12b91-680d-4857-85a0-48a2ec75248f",
     "url": "google.com",
     "description": "my google account yeyaa",
@@ -216,14 +216,6 @@ Returns a list of all passwords for the current user:
     "name": "stefano",
     "password": "123456789"
   },
-  "02bfc0d9-911d-4e3f-afdd-34c7933bf566": {
-    "_id": "02bfc0d9-911d-4e3f-afdd-34c7933bf566",
-    "url": "facebook.com",
-    "description": "my favorite place!!",
-    "email": "stefano@gamermail.com",
-    "name": "stefano",
-    "password": "246813579"
-  }
 }
 ```
 
