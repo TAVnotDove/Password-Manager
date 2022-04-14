@@ -7,13 +7,14 @@ import { renderHomepage } from './views/homepage.js'
 import { renderLogin } from './views/login.js'
 import { renderNavigation } from './views/navigation.js'
 import { renderRegister } from './views/register.js'
+import { renderSettings } from './views/settings.js'
 
 page(renderNavigation)
 page('/', renderHomepage)
 page('/create-password', renderCreatePassword)
 page('/register', renderRegister)
 page('/login', renderLogin)
-page('/settings', () => console.log('settings'))
+page('/settings', renderSettings)
 page('/logout', renderLogout)
 page('/edit/:id', renderEdit)
 page('/delete/:id', renderDelete)

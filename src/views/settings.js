@@ -4,7 +4,7 @@ const mainElement = document.querySelector('#content-main')
 
 const settingsTemplate = () => html`
     <div class="password">
-        <h1>Welcome</h2>
+        <h2>Settings</h2>
         <input placeholder="email">
         <input type="password" placeholder="password">
     </div>

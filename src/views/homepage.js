@@ -11,8 +11,8 @@ const passwordTemplate = (user, passwords) => html`
         <div class="password">
         <h2>${x.name}</h2>
         <label>password</label>
-        <input type="password" value=${x.password}>
-        <input type="checkbox">Show Password
+        <input type="password" id="password" value=${x.password}>
+        <input type="checkbox" @click=${showPassword}>Show Password
         <a href="/edit/${x._id}">Edit</a>
         <a href=${`/delete/${x._id}`}>Delete</a>
         </div>
@@ -39,5 +39,13 @@ export async function renderHomepage() {
         render(homepageTemplate(user, passwords), mainElement)
     } else {
         render(homepageTemplate(user), mainElement)
+    }
+}
+
+function showPassword(e) {
+    if (e.currentTarget.checked === true) {
+        e.currentTarget.parentElement.querySelector('#password').type = 'text'
+    } else {
+        e.currentTarget.parentElement.querySelector('#password').type = 'password'
     }
 }

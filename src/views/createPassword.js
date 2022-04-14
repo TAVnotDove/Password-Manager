@@ -25,7 +25,8 @@ const createPasswordTemplate = (submitForm) => html`
         </div>
         <div>
             <label>Password</label>
-            <input name="password" type="password" placeholder="Required">
+            <input name="password" id="password" type="password" placeholder="Required">
+            <input type="checkbox" @click=${showPassword}>Show Password
         </div>
         <button>Submit</button>
     </form>
@@ -51,4 +52,12 @@ export function renderCreatePassword(ctx) {
     }
 
     render(createPasswordTemplate(submitForm), mainElement)
+}
+
+function showPassword(e) {
+    if (e.currentTarget.checked === true) {
+        e.currentTarget.parentElement.querySelector('#password').type = 'text'
+    } else {
+        e.currentTarget.parentElement.querySelector('#password').type = 'password'
+    }
 }
