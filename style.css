@@ -1,4 +1,8 @@
-.nav-button {
+.nav-buttons li {
+    display: inline;
+}
+
+.button {
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
     padding: 10px;
@@ -7,7 +11,19 @@
     margin: 10px;
 }
 
+.button:hover {
+    background-color: lightgray;
+}
+
+.active {
+    background-color: lightgray;
+}
+
 .password {
     font-family: Arial, Helvetica, sans-serif;
     color: black;
+}
+
+#navigation {
+    background-color: blue;
 }
