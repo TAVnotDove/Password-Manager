@@ -1,5 +1,6 @@
 export function renderLogout(ctx) {
-    localStorage.clear()
-
-    ctx.page.redirect('/')
+    if (confirm("Are you sure you want to logout?") === true) {
+        localStorage.clear()
+        ctx.page.redirect('/')
+    }
 }
