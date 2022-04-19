@@ -5,8 +5,8 @@ import { getUser } from "../utils/getUser.js"
 const mainElement = document.querySelector('#content-main')
 
 const editTemplate = (submitForm, response) => html`
-    <form id="createPass" @submit=${submitForm}>
-        <h2>Edit password</h2>
+    <form @submit=${submitForm}>
+        <h1 class="page-title">Edit password</h1>
         <div>
             <label>URL</label>
             <input name="url" value=${response.url}>

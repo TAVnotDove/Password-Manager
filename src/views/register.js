@@ -4,8 +4,8 @@ import { register } from "../api.js"
 const mainElement = document.querySelector('#content-main')
 
 const registerTemplate = (submitForm) => html`
-    <form id="createPass" @submit=${submitForm}>
-        <h2>Register</h2>
+    <form @submit=${submitForm}>
+        <h1 class="page-title">Register</h1>
         <div>
             <label>Email</label>
             <input name="email">

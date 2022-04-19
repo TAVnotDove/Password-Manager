@@ -4,30 +4,30 @@ import { getUser } from "../utils/getUser.js"
 
 const mainElement = document.querySelector('#content-main')
 
-const passwordTemplate = (user, passwords) => html`
-    ${passwords.length === 0 ? html`
-        <p>You don't have any passwords.</p>
-    ` : passwords.map(x => html`
-        <div class="password">
-        <h2>${x.name}</h2>
-        <label>password</label>
-        <input type="password" id="password" value=${x.password}>
-        <input type="checkbox" @click=${showPassword}>Show Password
-        <a href="/edit/${x._id}">Edit</a>
-        <a href=${`/delete/${x._id}`}>Delete</a>
-        </div>
-    `)}
+const passwordTemplate = (passwords) => html`
+    <div class="flex-div">
+        ${passwords.length === 0 ? html`
+            <p>You don't have any passwords.</p>
+        ` : passwords.map(x => html`
+            <div class="password">
+                <h2>${x.name}</h2>
+                <label>password</label>
+                <input type="password" id="password" value=${x.password}>
+                <input type="checkbox" @click=${showPassword}>Show Password
+                <a href="/edit/${x._id}">Edit</a>
+                <a href=${`/delete/${x._id}`}>Delete</a>
+            </div>
+        `)}
+    </div>
 `
 
 const homepageTemplate = (user, passwords) => html`
-    <div class="password">
         ${user ? html`
-            <h1>Welcome ${user.email}</h2>
-            ${passwordTemplate(user, passwords)}
+            <h1 class="page-title">Welcome ${user.email}</h1>
+            ${passwordTemplate(passwords)}
         ` : html`
-            <h1>Welcome to Password Manager!</h2>
+            <h1 class="page-title">Welcome to Password Manager!</h2>
         `}
-    </div>
 `
 
 export async function renderHomepage() {

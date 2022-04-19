@@ -5,8 +5,8 @@ import { getUser } from "../utils/getUser.js"
 const mainElement = document.querySelector('#content-main')
 
 const createPasswordTemplate = (submitForm) => html`
-    <form id="createPass" @submit=${submitForm}>
-        <h2>Create new password</h2>
+    <form @submit=${submitForm}>
+        <h1 class="page-title">Create new password</h1>
         <div>
             <label>URL</label>
             <input name="url" placeholder="Optional">

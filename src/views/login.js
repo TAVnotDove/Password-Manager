@@ -4,19 +4,21 @@ import { login } from "../api.js"
 const mainElement = document.querySelector('#content-main')
 
 const loginTemplate = (submitForm) => html`
-    <form id="createPass" @submit=${submitForm}>
-        <h2>Login</h2>
-        <div>
-            <label>Email</label>
-            <input name="email">
-        </div>
-        <div>
-            <label>Password</label>
-            <input name="password" type="password">
-        </div>
-        <button>Submit</button>
-        <p id="error-message"></p>
-    </form>
+    <h1 class="page-title">Login</h1>
+    <div class="flex-div">
+        <form class="grid-form" @submit=${submitForm}>
+            <div>
+                <label>Email</label>
+                <input name="email">
+            </div>
+            <div>
+                <label>Password</label>
+                <input name="password" type="password">
+            </div>
+            <button>Submit</button>
+            <p id="error-message"></p>
+        </form>
+    </div>
 `
 
 export function renderLogin(ctx) {

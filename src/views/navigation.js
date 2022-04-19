@@ -24,9 +24,14 @@ export function renderNavigation(ctx, next) {
     render(navigationTemplate(getUser()), headerElement)
 
     let navButtons = Array.from(document.querySelectorAll('.nav-buttons .button'))
-    
+
     navButtons.forEach(x => x.classList.remove('active'))
-    navButtons.find(x => x.pathname === ctx.pathname).classList.add('active')
+
+    let activeButton = navButtons.find(x => x.pathname === ctx.pathname)
+
+    if (activeButton) {
+        activeButton.classList.add('active')
+    }
     
     next()
 }

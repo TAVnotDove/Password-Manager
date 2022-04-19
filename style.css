@@ -9,6 +9,7 @@
     border: 1px solid black;
     color: black;
     margin: 10px;
+    transition-duration: 0.5s;
 }
 
 .button:hover {
@@ -17,6 +18,29 @@
 
 .active {
     background-color: lightgray;
+}
+
+.page-title {
+    display: flex;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.grid-form {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border: 1px solid black;
+}
+
+.flex-div {
+    margin: 25px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .password {
