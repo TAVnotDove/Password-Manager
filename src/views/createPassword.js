@@ -48,7 +48,7 @@ export function renderCreatePassword(ctx) {
         if (email.length !== 0 && name.length !== 0 && password.length !== 0) {
             let user = JSON.parse(getUser())
             
-            let response = await createPassword(user.response.key, user.email, url, description, email, name, password)
+            createPassword(user.response.key, user.email, url, description, email, name, password)
             ctx.page.redirect('/')
         }
     }
@@ -63,31 +63,3 @@ function showPassword(e) {
         e.currentTarget.parentElement.querySelector('[name="password"]').type = 'password'
     }
 }
-
-{/* <h1 class="page-title">Create new password</h1>
-    <div class="flex-div">
-        <form class="form" @submit=${submitForm}>
-            <div>
-                <label>URL</label>
-                <input name="url" placeholder="Optional">
-            </div>
-            <div>
-                <label>Description</label>
-                <input name="description" placeholder="Optional">
-            </div>
-            <div>
-                <label>Email</label>
-                <input name="email" placeholder="Required">
-            </div>
-            <div>
-                <label>Name</label>
-                <input name="name" placeholder="Required">
-            </div>
-            <div>
-                <label>Password</label>
-                <input name="password" type="password" placeholder="Required">
-                <input type="checkbox" @click=${showPassword}>Show Password
-            </div>
-            <button>Submit</button>
-        </form>
-    </div> */}
