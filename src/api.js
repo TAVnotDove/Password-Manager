@@ -8,8 +8,12 @@ export function register(email, password) {
         },
         body: JSON.stringify({email, password})
     })
-    .then(response => response.json())
-    .catch(error => console.log(error))
+    .then(response => {
+        if (response.ok) {
+            return response.json()
+        }
+    })
+    .catch()
 }
 
 export function login(email, password) {
@@ -20,8 +24,12 @@ export function login(email, password) {
         },
         body: JSON.stringify({email, password})
     })
-    .then(response => response.json())
-    .catch(error => console.log(error))
+    .then(response => {
+        if (response.ok) {
+            return response.json()
+        }
+    })
+    .catch()
 }
 
 export function getPasswords(key, user) {
@@ -32,8 +40,12 @@ export function getPasswords(key, user) {
             'user': user
         }
     })
-    .then(response => response.json())
-    .catch(error => console.log(error))
+    .then(response => {
+        if (response.ok) {
+            return response.json()
+        }
+    })
+    .catch()
 }
 
 export function getPassword(key, user, id) {
@@ -45,7 +57,7 @@ export function getPassword(key, user, id) {
         }
     })
     .then(response => response.json())
-    .catch(error => console.log(error))
+    .catch()
 }
 
 export function createPassword(key, user, url, description, email, name, password) {
@@ -59,7 +71,7 @@ export function createPassword(key, user, url, description, email, name, passwor
         body: JSON.stringify({url, description, email, name, password})
     })
     .then(response => response.json())
-    .catch(error => console.log(error))
+    .catch()
 }
 
 export function editPassword(key, user, id, updates) {
@@ -73,7 +85,7 @@ export function editPassword(key, user, id, updates) {
         body: JSON.stringify({id, updates})
     })
     .then(response => response.json())
-    .catch(error => console.log(error))
+    .catch()
 }
 
 export function deletePassword(key, user, id) {
@@ -87,5 +99,5 @@ export function deletePassword(key, user, id) {
         body: JSON.stringify({id})
     })
     .then(response => response.json())
-    .catch(error => console.log(error))
+    .catch()
 }
