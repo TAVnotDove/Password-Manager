@@ -11,11 +11,11 @@ const passwordTemplate = (passwords) => html`
         ` : passwords.map(x => html`
             <div class="password">
                 <h2>${x.name}</h2>
-                <label>password</label>
-                <input type="password" id="password" value=${x.password}>
+                <label>Password:</label>
+                <input name="password" type="password" value=${x.password} disabled>
                 <input type="checkbox" @click=${showPassword}>Show Password
-                <a href="/edit/${x._id}">Edit</a>
-                <a href=${`/delete/${x._id}`}>Delete</a>
+                <a href="/edit/${x._id}" class="edit-button">Edit</a>
+                <a href=${`/delete/${x._id}`} class="delete-button">Delete</a>
             </div>
         `)}
     </div>
@@ -44,8 +44,8 @@ export async function renderHomepage() {
 
 function showPassword(e) {
     if (e.currentTarget.checked === true) {
-        e.currentTarget.parentElement.querySelector('#password').type = 'text'
+        e.currentTarget.parentElement.querySelector('[name="password"]').type = 'text'
     } else {
-        e.currentTarget.parentElement.querySelector('#password').type = 'password'
+        e.currentTarget.parentElement.querySelector('[name="password"]').type = 'password'
     }
 }

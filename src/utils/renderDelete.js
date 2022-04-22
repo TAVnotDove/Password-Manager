@@ -7,5 +7,7 @@ export async function renderDelete(ctx) {
     if (confirm("Are you sure you want to delete this password?") === true) {
         deletePassword(user.response.key, user.email, ctx.params.id)
         ctx.page.redirect('/')
+    } else {
+        ctx.page.redirect('/')
     }
 }

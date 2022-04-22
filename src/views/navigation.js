@@ -5,25 +5,22 @@ const headerElement = document.querySelector('#nav-header')
 
 const navigationTemplate = (loggedIn) => html`
     <nav>
-        <div class="nav-buttons">
-            <a class="button" href="/">Home</a>
-            ${loggedIn !== null ? html`
-                <a class="button" href="/create-password">Create new password</a>
-                <a class="button" href="/settings">Settings</a>
-                <a class="button" href="/logout">Logout</a>
-            ` : html`
-                <a class="button" href="/register">Register</a>
-                <a class="button" href="/login">Login</a>
-            `
-            }
-        </div>
+        <a class="nav-button" href="/">Home</a>
+        ${loggedIn !== null ? html`
+            <a class="nav-button" href="/create-password">Create new password</a>
+            <a class="nav-button" href="/logout">Logout</a>
+        ` : html`
+            <a class="nav-button" href="/register">Register</a>
+            <a class="nav-button" href="/login">Login</a>
+        `
+        }
     </nav>
 `
 
 export function renderNavigation(ctx, next) {
     render(navigationTemplate(getUser()), headerElement)
 
-    let navButtons = Array.from(document.querySelectorAll('.nav-buttons .button'))
+    let navButtons = Array.from(document.querySelectorAll('.nav-button'))
 
     navButtons.forEach(x => x.classList.remove('active'))
 
