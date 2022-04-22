@@ -1,9 +1,9 @@
 module.exports = (req, res, fs, bcrypt, CryptoJS, keys, data) => {
   //check if email is already in use
-  if (Object.keys(keys).includes(req.body.email)) return res.status(403).send('User already in exists');
+  if (Object.keys(keys).includes(req.body.email)) return res.status(403).send({ msg: 'User already in exists' });
   //check if password is strong
   bcrypt.hash(req.body.password, 10, function (err, hash) {
-    if (err) res.status(500).send('Error while hashing password');
+    if (err) res.status(500).send({ msg: 'Error while hashing password' });
 
     //prettier-ignore
     let key = (Math.random().toString(36) + Math.random().toString(36).toUpperCase() + Math.random().toString(36) + Math.random().toString(36).toUpperCase()).split('').sort(() => 0.5 - Math.random()).join('').replace(/\./g, '')

@@ -1,6 +1,6 @@
 module.exports = (req, res, fs, data, CryptoJS) => {
-  if (!req.decrypted[req.body.id]) return res.status(410).send('Password not found');
-  if (!req.body.updates) return res.status(400).send('Nothing to update');
+  if (!req.decrypted[req.body.id]) return res.status(410).send({ msg: 'Password not found' });
+  if (!req.body.updates) return res.status(400).send({ msg: 'Nothing to update' });
 
   req.decrypted[req.body.id] = { ...req.decrypted[req.body.id], ...req.body.updates };
 
@@ -9,7 +9,7 @@ module.exports = (req, res, fs, data, CryptoJS) => {
 
   fs.promises.writeFile('./data/data.json', JSON.stringify(data, null, 2));
 
-  res.send('Password details updated');
+  res.send({ msg: 'Password details updated' });
 };
 
 /*
