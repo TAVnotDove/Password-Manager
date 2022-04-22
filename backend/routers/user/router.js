@@ -14,10 +14,10 @@ router.use(/\/((?!register|login).)*/, (req, res, next) => {
       let decrypted = CryptoJS.AES.decrypt(data[req.headers.user], req.headers.key).toString(CryptoJS.enc.Utf8);
       req.decrypted = JSON.parse(decrypted);
     } catch (e) {
-      return res.status(401).send('Invalid key');
+      return res.status(401).send({ msg: 'Invalid key' });
     }
   } else {
-    return res.status(401).send('No key provided');
+    return res.status(401).send({ msg: 'No key provided' });
   }
   next();
 });
@@ -50,7 +50,7 @@ router.get('/passwords', (req, res) => {
 });
 
 router.get('/password/:id', (req, res) => {
-  if (!req.decrypted[req.params.id]) return res.status(404).send('Password not found');
+  if (!req.decrypted[req.params.id]) return res.status(404).send({ msg: 'Password not found' });
   res.send(req.decrypted[req.params.id]);
 });
 

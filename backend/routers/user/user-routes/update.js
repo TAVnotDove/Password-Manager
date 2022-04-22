@@ -1,7 +1,7 @@
 module.exports = (req, res, fs, bcrypt, CryptoJS, keys, data) => {
   if (req.body.password) {
     bcrypt.hash(req.body.password, 10, function (err, hash) {
-      if (err) res.status(500).send('Error while hashing password');
+      if (err) res.status(500).send({ msg: 'Error while hashing password' });
 
       //prettier-ignore
       let key = (Math.random().toString(36) + Math.random().toString(36).toUpperCase() + Math.random().toString(36) + Math.random().toString(36).toUpperCase()).split('').sort(() => 0.5 - Math.random()).join('').replace(/\./g, '')
@@ -22,7 +22,7 @@ module.exports = (req, res, fs, bcrypt, CryptoJS, keys, data) => {
       res.status(201).json({ key });
     });
   } else if (req.body.email) {
-    if (Object.keys(keys).includes(req.body.email)) return res.status(403).send('User already in exists');
+    if (Object.keys(keys).includes(req.body.email)) return res.status(403).send({ msg: 'User already in exists' });
 
     keys[req.body.email] = keys[req.headers.user];
     data[req.body.email] = data[req.headers.user];
@@ -33,9 +33,9 @@ module.exports = (req, res, fs, bcrypt, CryptoJS, keys, data) => {
     fs.promises.writeFile('./data/keys.json', JSON.stringify(keys, null, 2));
     fs.promises.writeFile('./data/data.json', JSON.stringify(data, null, 2));
 
-    res.status(200).send('Email updated');
+    res.status(200).send({ msg: 'Email updated' });
   } else {
-    res.status(403).send('You cant update like that');
+    res.status(403).send({ msg: 'You cant update like that' });
   }
 };
 
