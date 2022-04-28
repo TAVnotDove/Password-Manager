@@ -9,11 +9,11 @@ const loginTemplate = (submitForm) => html`
         <form class="flex-form" @submit=${submitForm}>
             <div class="flex-form-div">
                 <label>Email</label>
-                <input name="email">
+                <input name="email" placeholder="email@domain.extension">
             </div>
             <div class="flex-form-div">
                 <label>Password</label>
-                <input name="password" type="password">
+                <input name="password" type="password" placeholder="••••••">
             </div>
             <button>Submit</button>
             <p class="error-message"></p>

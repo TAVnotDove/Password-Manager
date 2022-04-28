@@ -9,7 +9,7 @@ const registerTemplate = (submitForm) => html`
         <form class="flex-form" @submit=${submitForm}>
             <div class="flex-form-div">
                 <label>Email</label>
-                <input name="email" placeholder="name@domain.extension">
+                <input name="email" placeholder="email@domain.extension">
             </div>
             <div class="flex-form-div">
                 <label>Password</label>
